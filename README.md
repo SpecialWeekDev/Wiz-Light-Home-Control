@@ -22,3 +22,12 @@ A python project for controlling Wiz smart lights/switches over discord for a fu
 ## Things to add
 
 - Discord compatibility (possibly throught discord webhook or discord bot)
+- Maybe Pico W compatibility for fun (in the future)
+
+## Available Commands
+
+- 'exit' - Exit the program
+- 'help' - xxx
+- 'on' - Turn light on
+- 'off' - Turn light off
+- 'brightness' - Set brightness level (0-255)S
