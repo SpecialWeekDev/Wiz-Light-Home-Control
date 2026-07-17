@@ -26,8 +26,8 @@ A python project for controlling Wiz smart lights/switches over discord for a fu
 
 ## Available Commands
 
-- 'exit' - Exit the program
-- 'help' - xxx
-- 'on' - Turn light on
-- 'off' - Turn light off
-- 'brightness' - Set brightness level (0-255)S
+- `exit` - Exit the program
+- `help` - xxx
+- `on` - Turn light on
+- `off` - Turn light off
+- `brightness` - Set brightness level (0-255)
