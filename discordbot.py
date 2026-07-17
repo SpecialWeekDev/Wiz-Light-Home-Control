@@ -11,13 +11,19 @@ class MyClient(discord.Client):
         self.tree = app_commands.CommandTree(self)
 
     async def on_ready(self):
-        await self.tree.sync()
+        synced = await self.tree.sync()
+
+        print(f"Synced {len(synced)} commands")
+        for command in synced:
+            print(command.name)
+
+
         print(f"Logged in as {self.user}")
 
 client = MyClient()
 
 @client.tree.command(name="light_on")
-@app_commands.describe(room="Which light?")
+@app_commands.describe(room="Which room light?")
 async def light_on(
     interaction: discord.Interaction,
     room: str
@@ -31,7 +37,7 @@ async def light_on(
         await interaction.response.send_message(str(e), ephemeral=True)
 
 @client.tree.command(name="light_off")
-@app_commands.describe(room="Which light?")
+@app_commands.describe(room="Which room light?")
 async def light_off(
     interaction: discord.Interaction,
     room: str
@@ -45,7 +51,7 @@ async def light_off(
         await interaction.response.send_message(str(e), ephemeral=True)
 
 @client.tree.command(name="brightness")
-@app_commands.describe(room="Which light?", level="Brightness level?")
+@app_commands.describe(room="Which room light?", level="Brightness level?")
 async def brightness(
     interaction: discord.Interaction,
     room: str,
