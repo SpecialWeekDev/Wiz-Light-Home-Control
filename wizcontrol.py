@@ -1,23 +1,21 @@
 from pywizlight import wizlight, PilotBuilder
-from config import BEDROOM, GAME_ROOM
+from config import LIGHTS
 
-lightBR = wizlight(BEDROOM)
-lightGR = wizlight(GAME_ROOM)
+def get_light(room):
+    ip = LIGHTS.get(room)
+
+    if ip is None:
+        raise ValueError(f"Unknown room: {room}")
+    return wizlight(ip)
 
 async def turn_on(room):
-    if room == "bed":
-        await lightBR.turn_on(PilotBuilder())
-    elif room == "game":
-        await lightGR.turn_on(PilotBuilder())
+    light = get_light(room)
+    await light.turn_on(PilotBuilder())
 
 async def turn_off(room):
-    if room == "bed":
-        await lightBR.turn_off()
-    elif room == "game":
-        await lightGR.turn_off()
+    light = get_light(room)
+    await light.turn_off()
 
 async def set_brightness(room, brightness):
-    if room == "bed":
-        await lightBR.turn_on(PilotBuilder(brightness=brightness))
-    elif room == "game":
-        await lightGR.turn_on(PilotBuilder(brightness=brightness))
+    light = get_light(room)
+    await light.turn_on(PilotBuilder(brightness=brightness))
