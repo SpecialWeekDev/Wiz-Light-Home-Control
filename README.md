@@ -36,10 +36,11 @@ A python project for controlling Wiz smart lights/switches over discord for a fu
 
 - `turn_off` - Turn light off
 - `turn_on` - Turn light on
+- `brightness` - Set brightness level (0-255)
 
 Currently available room to choose from
 
-- game
-- bed
+- `game`
+- `bed`
 
 Unless config has been modified to your personal WIZ control

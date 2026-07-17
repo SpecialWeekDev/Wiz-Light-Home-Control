@@ -39,9 +39,25 @@ async def light_off(
     try:
         await turn_off(room)
         await interaction.response.send_message(
-            f"🌙 {room} light turned off!"
+            f"🌙 {room}room light turned off!"
         )
     except ValueError as e:
         await interaction.response.send_message(str(e), ephemeral=True)
+
+@client.tree.command(name="brightness")
+@app_commands.describe(room="Which light?", level="Brightness level?")
+async def brightness(
+    interaction: discord.Interaction,
+    room: str,
+    level: app_commands.Range[int, 0, 255]
+):
+    try:
+        await set_brightness(room, level)
+        await interaction.response.send_message(
+            f"💡 {room}room brightness set to {level}!"
+        )
+    except ValueError as e:
+        await interaction.response.send_message(str(e), ephemeral=True)
+
 
 client.run(DISCORD_TOKEN)

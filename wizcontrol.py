@@ -17,5 +17,8 @@ async def turn_off(room):
     await light.turn_off()
 
 async def set_brightness(room, brightness):
+    if brightness < 0 or brightness > 255:
+        raise ValueError("Brightness value should be 0-255")
+
     light = get_light(room)
     await light.turn_on(PilotBuilder(brightness=brightness))
