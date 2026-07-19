@@ -8,15 +8,15 @@ web = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@web.route("/on")
+@web.route("/on", methods=["POST"])
 def light_on():
     asyncio.run(turn_on("game"))
-    return "Light is on"
+    return "", 204
 
-@web.route("/off")
+@web.route("/off", methods=["POST"])
 def light_off():
     asyncio.run(turn_off("game"))
-    return "Light is off"
+    return "", 204
 
 @web.route("/brightness/<int:level>")
 def brightness(level):
