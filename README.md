@@ -1,6 +1,6 @@
 # WIZ Light Home Control
 
-A python project for controlling Wiz smart lights/switches over discord for a fun mini challenge and learning experience using 'pywizlight'.
+A python project for controlling Wiz smart lights/switches over discord for a fun mini challenge (and possibly might add new challenging ideas along the way) and learning experience using 'pywizlight'.
 
 ## Goals
 
@@ -9,6 +9,8 @@ A python project for controlling Wiz smart lights/switches over discord for a fu
 - Learn discord bot
 - Build a discord and command-line interface to control Wiz devices
 
+- Learn to use flask (along with HTML/CSS and some JavaScript) to build a mini website
+
 - Also learning git and github workflow (lol)
 
 ## Current Features
@@ -16,12 +18,14 @@ A python project for controlling Wiz smart lights/switches over discord for a fu
 - Discover WIZ devices
 - Control devices (Only work for **ESP01_DIMTRIACS_01** model)
 - Interactive command-line interface
+- Discord bot/app compatibility
+- Basic Interactive website
 
 ## Project is still currently under development 
 
 ## Things to add
 
-- Discord compatibility (possibly throught discord webhook or discord bot)
+- ✅ Discord compatibility (possibly throught discord webhook or discord bot)
 - Maybe Pico W compatibility for fun (in the future)
 
 ## Available CLI Commands

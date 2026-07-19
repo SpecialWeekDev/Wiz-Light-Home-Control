@@ -1,0 +1,51 @@
+<html>
+
+    <head>
+        <title>WIZ Controller</title>
+
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+
+    <body>
+        <h1>Special Week WIZ Web Wiimote</h1>
+
+        <form action="/on">
+            <button>Turn ON</button>
+        </form>
+
+        <form action="/off">
+            <button>Turn OFF</button>
+        </form>
+
+        <h2>Adjust brightness</h2>
+
+        <input 
+            type="range"
+            min="0"
+            max="255"
+            value="128"
+            id="brightnessSlider"
+        >
+
+        <p>
+            Brightness:
+            <span id="brightnessValue">128</span>
+        </p>
+
+        <script>
+            const slider = document.getElementById("brightnessSlider");
+            const display = document.getElementById("brightnessValue");
+
+            slider.oninput = function() {
+                display.innerHTML = this.value;
+            }
+
+            slider.onchange = function() {
+                fetch("/brightness/" + this.value);
+            }
+
+        </script>
+
+    </body>
+
+</html>
