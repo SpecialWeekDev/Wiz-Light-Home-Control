@@ -1,6 +1,7 @@
 import asyncio
 from pywizlight import wizlight, PilotBuilder, discovery
-from config import BEDROOM, GAME_ROOM
+from config import LIGHTS
+from wizcontrol import turn_off, turn_on, set_brightness, get_light
 
 async def main():
     bulbs = await discovery.discover_lights()
@@ -9,9 +10,6 @@ async def main():
         print(bulb)
         print()
 
-    lightBR = wizlight(BEDROOM)
-    lightGR = wizlight(GAME_ROOM)
-
     while True:
         command = input("Enter command: ").lower()
 
@@ -19,28 +17,19 @@ async def main():
             break
 
         elif command == "on":
-            command = input("Which light? (bed/game): ").lower()
+            room = input("Which light? (bed/game): ").lower()
 
-            if command == "bed":
-                await lightBR.turn_on(PilotBuilder())
-            elif command == "game":
-                await lightGR.turn_on(PilotBuilder())
+            await turn_on(room)
 
         elif command == "off":
-            command = input("Which light? (bed/game): ").lower()
+            room = input("Which light? (bed/game): ").lower()
 
-            if command == "bed":
-                await lightBR.turn_off()
-            elif command == "game":
-                await lightGR.turn_off()
+            await turn_off(room)
 
         elif command == "brightness":
-            command = input("Which light? (bed/game): ").lower()
+            room = input("Which light? (bed/game): ").lower()
             brightness = int(input("Enter brightness (0-255): "))
 
-            if command == "bed":
-                await lightBR.turn_on(PilotBuilder(brightness=brightness))
-            elif command == "game":
-                await lightGR.turn_on(PilotBuilder(brightness=brightness))
+            await set_brightness(room, brightness)
 
 asyncio.run(main())
