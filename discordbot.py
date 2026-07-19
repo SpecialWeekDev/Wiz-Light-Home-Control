@@ -22,6 +22,20 @@ class MyClient(discord.Client):
 
 client = MyClient()
 
+# When @mention bot, automatically turn off both light (ignoring if it's on or off)
+@client.event
+async def on_message(
+    message
+):
+    if message.author == client.user:
+        return
+    
+    if client.user in message.mentions:
+        await turn_off("game")
+        await turn_off("bed")
+        await message.channel.send("gUdnite!")
+
+
 @client.tree.command(name="light_on")
 @app_commands.describe(room="Which room light?")
 async def light_on(
